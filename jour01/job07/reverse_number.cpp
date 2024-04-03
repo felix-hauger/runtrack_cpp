@@ -6,26 +6,25 @@ using namespace std;
 
 int main ()
 {
-    char number[100];
-    char *result;
-    int i;
-    int j;
+    int number;
+    int result;
+    int modulo;
 
     cout << "Enter an integer to reverse" << endl;
 
     cin >> number;
 
-    result = (char*)malloc(sizeof(char*) * strlen(number));
+    result = 0;
 
-    j = 0;
-    for (i = strlen(number) - 1; i >= 0; i--) {
-        result[j] = number[i];
-        j++;
+    while (number > 0) {
+        result *= 10;
+        modulo = number % 10;
+        number -= modulo;
+        number /= 10;
+        result += modulo;
     }
 
     cout << "Reversed: " << result << endl;
-
-    free(result);
 
     return 0;
 }
